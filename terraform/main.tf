@@ -44,7 +44,7 @@ resource "aws_elastic_beanstalk_application" "app2048" {
 resource "aws_elastic_beanstalk_environment" "appenv2048" {
   name                = "appenv2048-shani-daria"
   application         = aws_elastic_beanstalk_application.app2048.name
-  solution_stack_name = ""64bit Amazon Linux 2 v5.5.2 running Node.js 16""
+  solution_stack_name = "64bit Amazon Linux 2 v5.5.2 running Node.js 16"
   version_label = 1.0
   bucket      = "aws_s3_bucket_object.s3project.bucket"
   key         = "s3_object_content.s3output.value"
