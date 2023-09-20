@@ -111,7 +111,7 @@ resource "aws_elastic_beanstalk_environment" "appenv2048" {
   }
 
   depends_on = [aws_s3_bucket_object.s3project]
-  depends_on = [s3_object_content.s3output]
+
 
 }
 
