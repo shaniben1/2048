@@ -35,15 +35,15 @@ output "s3_object_content" "s3output"{
 
 # Create elastic beanstalk application
 
-resource "aws_elastic_beanstalk_application" "2048app" {
-  name        = "2048app-shani-daria"
-  description = "2048app-shani-daria"
+resource "aws_elastic_beanstalk_application" "app2048" {
+  name        = "shani-daria-2048app"
+  description = "shani-daria-2048app"
 
 }
 
-resource "aws_elastic_beanstalk_environment" "2048appenv" {
-  name                = "env2048app-shani-daria"
-  application         = aws_elastic_beanstalk_application.2048app.name
+resource "aws_elastic_beanstalk_environment" "appenv2048" {
+  name                = "appenv2048-shani-daria"
+  application         = aws_elastic_beanstalk_application.app2048.name
   solution_stack_name = ""64bit Amazon Linux 2 v5.5.2 running Node.js 16""
   version_label = 1.0
   bucket      = "aws_s3_bucket_object.s3project.bucket"
