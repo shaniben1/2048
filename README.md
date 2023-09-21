@@ -2,7 +2,9 @@
 
 AWS Elastic Beanstalk helps to quickly deploy and manage applications in the AWS Cloud without having to worry about the infrastructure that runs those applications. reduces management complexity without restricting choice or control.
 
-![](D:/Users/Shani/PycharmProjects/2048-Application/pictures/img.png)
+
+![](pictures/img.png)
+
 
 enables automated infrastructure management and code deployment, by simply uploading, for applications and includes Application platform management, Capacity provisioning, Load Balancing, Auto Scaling, Code deployment, Health Monitoring.
 
@@ -19,7 +21,8 @@ Elastic Beanstalk environment requires an environment tier, platform, and enviro
     3.Deploy the application with Terraform.
     4.Enjoy the application.
 
-![](D:/Users/Shani/PycharmProjects/2048-Application/pictures/img_1.png)
+
+![](pictures/img_1.png)
 
 
 **# AWS - CloudFormation service**
