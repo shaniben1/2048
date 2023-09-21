@@ -10,16 +10,16 @@ enables automated infrastructure management and code deployment, by simply uploa
 
 Elastic Beanstalk environment requires an environment tier, platform, and environment type. Environment tier determines whether EB provisions resources to support
 
-    1.Web tier – a web application that handles HTTP(S) requests    
-    2.Worker tier – an application that handles background-processing tasks.
+  1.Web tier – a web application that handles HTTP(S) requests    
+  2.Worker tier – an application that handles background-processing tasks.
 
 
 # **The Project - Application web game-2048**
 
-    1.Create a dockerfile with source code application.
-    2.Create a bucket in region and upload the Dockerfile to bucket.
-    3.Deploy the application with Terraform.
-    4.Enjoy the application.
+  1.Create a dockerfile with source code application.
+  2.Create a bucket in region and upload the Dockerfile to bucket.
+  3.Deploy the application with Terraform.
+  4.Enjoy the application.
 
 
 ![](pictures/img_1.png)
