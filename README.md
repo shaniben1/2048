@@ -16,9 +16,9 @@ Elastic Beanstalk environment requires an environment tier, platform, and enviro
 
 # **The Project - Application web game-2048**
 
-  1.Create a dockerfile with source code application.
-  2.Create a bucket in region and upload the Dockerfile to bucket.
-  3.Deploy the application with Terraform.
+  1.Create a dockerfile with source code application.    
+  2.Create a bucket in region and upload the Dockerfile to bucket.   
+  3.Deploy the application with Terraform.   
   4.Enjoy the application.
 
 
