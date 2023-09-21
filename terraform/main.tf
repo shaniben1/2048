@@ -16,56 +16,57 @@ provider "aws" {
 
 
 
-
-
-data "aws_s3_bucket_object" "s3project" {
-  bucket = "project-daria-shani"
-  key    = "2048/Dockerfile"
-}
-
-
-output "s3_object_content" "s3output"{
-  value = data.aws_s3_bucket_object.s3project.body
-}
-
-
-
-
-
-
-# Create elastic beanstalk application
-
-resource "aws_elastic_beanstalk_application" "app2048" {
-  name        = "shani-daria-2048app"
-  description = "shani-daria-2048app"
+resource "aws_elastic_beanstalk_application" "test-2048" {
+  name        = "test-2048"
+  description = "test-2048-daria-shani"
 
 }
 
-resource "aws_elastic_beanstalk_environment" "appenv2048" {
-  name                = "appenv2048-shani-daria"
-  application         = aws_elastic_beanstalk_application.app2048.name
-  solution_stack_name = "64bit Amazon Linux 2 v5.5.2 running Node.js 16"
-  version_label = 1.0
-  bucket      = "aws_s3_bucket_object.s3project.bucket"
-  key         = "s3_object_content.s3output.value"
+
+
+resource "aws_elastic_beanstalk_application_version" "test-2048" {
+  name        = "2048-version-1.5"
+  application = "test-2048"
+  description = "application version"
+  bucket      = "project-daria-shani"
+  key         = "2048/Dockerfile"
+
+
+}
+
+
+
+
+resource "aws_elastic_beanstalk_environment" "Application2048-daria-shani" {
+  name                = "test-2048"
+  application         = aws_elastic_beanstalk_application.test-2048.name
+  solution_stack_name = "64bit Amazon Linux 2023 v4.0.1 running Docker"
+  version_label       = aws_elastic_beanstalk_application_version.test-2048.name
+
+
 
   setting {
     namespace = "aws:ec2:vpc"
     name      = "VPCId"
-    value     = vpc-0d37ae25adc984356
+    value     = "vpc-0d37ae25adc984356"
   }
 
-    setting {
+  setting {
     namespace = "aws:ec2:vpc"
     name      = "Subnets"
     value     = "subnet-0eb0c47b5d27e872e"
   }
 
+   setting {
+    namespace = "aws:ec2:vpc"
+    name      = "Subnets"
+    value     = "subnet-05deba43835a0d6c9"
+  }
 
-  setting {
+    setting {
     namespace = "aws:autoscaling:launchconfiguration"
     name      = "IamInstanceProfile"
-    value     =  "aws-elasticbeanstalk-ec2-role"
+    value     =  "ElasticBeanstalkApp"
   }
   setting {
     namespace = "aws:ec2:vpc"
@@ -74,45 +75,31 @@ resource "aws_elastic_beanstalk_environment" "appenv2048" {
   }
 
 
-  setting {
-    namespace = "aws:elasticbeanstalk:environment:process:default"
-    name      = "MatcherHTTPCode"
-    value     = "200"
-  }
-  setting {
-    namespace = "aws:elasticbeanstalk:environment"
-    name      = "LoadBalancerType"
-    value     = "application"
-  }
-  setting {
+   setting {
     namespace = "aws:autoscaling:launchconfiguration"
     name      = "InstanceType"
-    value     = "t2.medium"
+    value     = "t3.micro"
   }
-  setting {
-    namespace = "aws:ec2:vpc"
-    name      = "ELBScheme"
-    value     = "internet facing"
-  }
-  setting {
+   setting {
     namespace = "aws:autoscaling:asg"
     name      = "MinSize"
     value     = 1
   }
+
   setting {
     namespace = "aws:autoscaling:asg"
     name      = "MaxSize"
     value     = 2
   }
-  setting {
+   setting {
     namespace = "aws:elasticbeanstalk:healthreporting:system"
     name      = "SystemType"
     value     = "enhanced"
   }
 
-  depends_on = [aws_s3_bucket_object.s3project]
-
-
+   setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "project-daria-shani"
+    value     = "s3://project-daria-shani/2048/Dockerfile/"
+  }
 }
-
-
