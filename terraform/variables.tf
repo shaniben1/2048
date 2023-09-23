@@ -7,8 +7,8 @@ variable "beanstalkappenv" {
 variable "solution_stack_name" {
   type = string
 }
-variable "tier" {
-  type = string
-}
+#variable "tier" {
+#  type = string
+#}
 
 
