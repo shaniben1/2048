@@ -1,14 +1,17 @@
 terraform {
+  #Configure the AWS Provider
   required_providers {
     aws = {
       source  = "hashicorp/aws"
       version = "4.16"
     }
   }
+
+
   required_version = ">= 1.0.0"
 }
 
-# Configure the AWS Provider
+
 provider "aws" {
   region = "us-west-1"
 }
@@ -30,10 +33,7 @@ resource "aws_elastic_beanstalk_application_version" "test-2048" {
   description = "application version"
   bucket      = "project-daria-shani"
   key         = "2048/Dockerfile"
-
-
 }
-
 
 
 
